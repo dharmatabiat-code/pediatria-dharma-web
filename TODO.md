@@ -1,25 +1,13 @@
-# TODO: Add Mobile AOS Animations to Index Components
+# Task: Cambiar iconos Lucide de legales por Awesome
 
-## Status Legend
-- [ ] **Pending**
-- [x] **Completed**
+## Plan aprobado ✅
+## Task completada ✅
 
-## Step-by-Step Plan
+**Completado:**
+- [x] 1. Crear/editar TODO.md 
+- [x] 2. Actualizar src/components/legales/Footer.astro - Iconos cambiados: phone→fa-phone, mail→fa-envelope, map-pin→fa-map-location-dot. Script lucide removido.
+- [x] 3. Verificar cambios - Archivo actualizado correctamente.
+- [x] 4. Iconos Awesome funcionando en legales.
+- [x] 5. Task completada.
 
-### 1. **Enable Mobile AOS for Index Page Only** [x]
-   - [x] src/pages/index.astro: Add `class="aos-mobile-enabled"` to `<main>`
-   - [x] src/layouts/Layout.astro: Add CSS override to enable AOS on mobile for `.aos-mobile-enabled [data-aos]`
-
-### 2. **Enhance AOS in Index Components (like AboutSection pattern)** [x]
-   - [x] src/components/index/TeamSection.astro: Already has full pattern
-   - [x] src/components/index/InfrastructureSecion.astro: Already has full pattern
-   - [x] Others reviewed: Most have matching AOS (Hero, Faq, QuickServices, Testimonials)
-
-### 3. **Testing & Verification** [x]
-   - [x] Mobile AOS enabled - ready to test with `npm run dev`
-
-### Next Steps After Completion
-- Optimize delays/durations for mobile
-- User feedback round
-
-**Status: COMPLETE** 🎉 Mobile AOS animations added to index components!
+Los iconos Lucide en la sección legales han sido reemplazados exitosamente por Font Awesome.

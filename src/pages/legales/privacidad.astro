@@ -1,11 +1,11 @@
 ---
 import Layout_legales from '../../layouts/Layout_legales.astro';
-import { siteConfig } from "../../data/siteConfig";
+import { company } from "../../data/company";
 ---
 
 <Layout_legales 
   title="Política de Privacidad"
-  description={`Política de privacidad del sitio web de ${siteConfig.name}. Conoce cómo protegemos tus datos.`}
+  description={`Política de privacidad del sitio web de ${company.name}.`}
 >
   <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 lg:py-16">
     
@@ -22,94 +22,46 @@ import { siteConfig } from "../../data/siteConfig";
     
     <div class="prose prose-lg max-w-none text-gray-700 space-y-6 md:space-y-8">
       <p class="text-base md:text-lg">
-        Esta Política de Privacidad describe cómo <strong>{siteConfig.name}</strong>, 
-        propiedad de <strong>{siteConfig.owner}</strong>, recopila, utiliza y protege 
-        la información que usted proporciona al utilizar nuestro sitio web.
+        Esta Política de Privacidad describe el compromiso de <strong>{company.name}</strong>, 
+        propiedad de <strong>{company.owner}</strong>, con la privacidad de los usuarios que visitan nuestro sitio web.
       </p>
 
       <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
         <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">1. Información que recopilamos</h2>
         <p class="text-sm md:text-base">
-          Recopilamos información que usted nos proporciona directamente a través de:
+          <strong>{company.name} no recopila ni almacena datos personales a través de este sitio web.</strong>
         </p>
-        <ul class="list-disc pl-4 md:pl-6 space-y-2 mt-4 text-sm md:text-base">
-          <li>Formularios de contacto</li>
-          <li>Suscripción a boletines</li>
-          <li>Comentarios en el blog</li>
-          <li>Cookies y tecnologías de seguimiento</li>
-        </ul>
-      </section>
-
-      <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
-        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">2. Uso de la información</h2>
-        <p class="text-sm md:text-base">Utilizamos su información para:</p>
-        <ul class="list-disc pl-4 md:pl-6 space-y-2 mt-4 text-sm md:text-base">
-          <li>Responder a sus consultas y mensajes</li>
-          <li>Mejorar la experiencia del usuario en el sitio</li>
-          <li>Enviar información que haya solicitado</li>
-          <li>Analizar el tráfico y uso del sitio web</li>
-          <li>Cumplir con obligaciones legales</li>
-        </ul>
-      </section>
-
-      <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
-        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">3. Cookies</h2>
-        <p class="text-sm md:text-base">
-          Este sitio utiliza cookies para mejorar su experiencia. Las cookies son pequeños archivos de texto 
-          que se almacenan en su navegador. Puede configurar su navegador para rechazar todas las cookies 
-          o para recibir una advertencia cuando se envíe una cookie.
+        <p class="text-sm md:text-base mt-2">
+          No utilizamos formularios que almacenen información en nuestros servidores. La única forma de contacto disponible es a través de mensajes directos por WhatsApp.
         </p>
       </section>
 
       <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
-        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">4. Cookies de terceros</h2>
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">2. Cookies</h2>
         <p class="text-sm md:text-base">
-          Algunos de nuestros anuncios y funcionalidades pueden utilizar cookies de terceros, como:
+          <strong>Este sitio no utiliza cookies ni tecnologías de seguimiento.</strong> No almacenamos ningún archivo en su dispositivo a través del navegador.
         </p>
-        <ul class="list-disc pl-4 md:pl-6 space-y-2 mt-4 text-sm md:text-base">
-        <ul class="list-disc pl-4 md:pl-6 space-y-2 mt-4 text-sm md:text-base">
-          <li>Cumplir con requerimientos legales</li>
-          <li>Proteger nuestros derechos o seguridad</li>
-          <li>Proporcionar servicios en nuestro nombre (bajo estricta confidencialidad)</li>
-        </ul>
       </section>
 
       <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
-        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">5. Sus derechos</h2>
-        <p class="text-sm md:text-base">Usted tiene derecho a:</p>
-        <ul class="list-disc pl-4 md:pl-6 space-y-2 mt-4 text-sm md:text-base">
-          <li>Acceder a sus datos personales</li>
-          <li>Rectificar información inexacta</li>
-          <li>Solicitar la eliminación de sus datos</li>
-          <li>Oponerse al tratamiento de sus datos</li>
-          <li>Retirar su consentimiento en cualquier momento</li>
-        </ul>
-      </section>
-
-      <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
-        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">6. Contacto</h2>
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">3. Contacto</h2>
         <p class="text-sm md:text-base">
-          Si tiene preguntas sobre esta política de privacidad o desea ejercer sus derechos, 
-          puede contactarnos en:
+          Para cualquier consulta o para agendar una cita, puede contactarnos directamente a través de WhatsApp:
         </p>
         <ul class="list-none pl-0 space-y-3 mt-4 text-sm md:text-base">
           <li class="flex items-center gap-2">
-            <i data-lucide="mail" class="w-4 h-4 text-[#5086c1]"></i>
-            <strong>Correo electrónico:</strong> {siteConfig.contact.email}
-          </li>
-          <li class="flex items-center gap-2">
             <i data-lucide="phone" class="w-4 h-4 text-[#5086c1]"></i>
-            <strong>Teléfono:</strong> {siteConfig.contact.phone}
+            <strong>WhatsApp:</strong> <a href={company.contact.linkWhatsapp} target="_blank" rel="noopener noreferrer" class="text-[#5086c1] hover:underline">{company.contact.whatsapp}</a>
           </li>
           <li class="flex items-center gap-2">
             <i data-lucide="map-pin" class="w-4 h-4 text-[#5086c1]"></i>
-            <strong>Dirección:</strong> {siteConfig.location.fullAddress}
+            <strong>Dirección:</strong> {company.address.fullAddress}
           </li>
         </ul>
       </section>
 
       <section class="bg-gray-50 p-4 md:p-6 rounded-xl border border-gray-200">
-        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">7. Actualizaciones</h2>
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">4. Actualizaciones</h2>
         <p class="text-sm md:text-base">
           Esta política de privacidad puede ser actualizada periódicamente. 
           Cualquier cambio será publicado en esta página con la fecha de última actualización.
@@ -132,10 +84,3 @@ import { siteConfig } from "../../data/siteConfig";
     </div>
   </div>
 </Layout_legales>
-
-<script is:inline>
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
-</script>
-

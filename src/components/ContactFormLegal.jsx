@@ -43,7 +43,6 @@ export default function ContactFormLegal({
     { value: 'aviso-legal', label: 'Aviso Legal' },
     { value: 'privacidad', label: 'Política de Privacidad' },
     { value: 'terminos', label: 'Términos de Uso' },
-    { value: 'cookies', label: 'Política de Cookies' },
     { value: 'otros', label: 'Otro asunto legal' }
   ];
 

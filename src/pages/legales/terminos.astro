@@ -1,11 +1,12 @@
 ---
 import Layout_legales from '../../layouts/Layout_legales.astro';
 import { siteConfig } from "../../data/siteConfig";
+import { company } from "../../data/company";
 ---
 
 <Layout_legales 
   title="Términos de Uso"
-  description={`Términos y condiciones de uso del sitio web de ${siteConfig.name}.`}
+  description={`Términos y condiciones de uso del sitio web de ${company.name}.`}
 >
   <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 lg:py-16">
     
@@ -22,9 +23,9 @@ import { siteConfig } from "../../data/siteConfig";
     
     <div class="prose prose-lg max-w-none text-gray-700 space-y-6 md:space-y-8">
       <p class="text-base md:text-lg">
-        Bienvenido al sitio web de <strong>{siteConfig.name}</strong>. Al acceder y utilizar este sitio, 
+        Bienvenido al sitio web de <strong>{company.name}</strong>. Al acceder y utilizar este sitio, 
         usted acepta regirse por los siguientes términos y condiciones. 
-        <strong>{siteConfig.name}</strong> es propiedad de <strong>{siteConfig.owner}</strong>.
+        <strong>{company.name}</strong> es propiedad de <strong>{company.owner}</strong>.
       </p>
 
       <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
@@ -155,10 +156,4 @@ import { siteConfig } from "../../data/siteConfig";
     </div>
   </div>
 </Layout_legales>
-
-<script is:inline>
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
-</script>
 

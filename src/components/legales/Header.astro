@@ -1,165 +1,87 @@
 ---
-// Header para páginas legales - Versión simplificada y responsiva
-import { siteConfig } from "../../data/siteConfig";
+// HeaderLegal.astro
+import { company } from "../../data/company";
+import NavDesktop from "../legales/header/NavDesktop.astro";
+import NavMobile from "../legales/header/NavMobile.astro";
+
 const pathname = new URL(Astro.request.url).pathname;
 
-// Determinar si estamos en una página activa
-const isPrivacidad = pathname === '/legales/privacidad';
-const isTerminos = pathname === '/legales/terminos';
-const isCookies = pathname === '/legales/cookies';
-const islegales = pathname === '/legales/aviso-legal';
+// Generación dinámica
+const baseNavItems = [
+  { label: "Aviso Legal", href: "/legales/aviso-legal" },
+  { label: "Privacidad", href: "/legales/privacidad" },
+  { label: "Términos", href: "/legales/terminos" },
+];
+
+// Detectar activo automáticamente
+const navItems = baseNavItems.map(item => ({
+  ...item,
+  active: pathname === item.href
+}));
+
+// Mobile añade contacto
+const navItemsMobile = [
+  ...navItems,
+  { label: "Contacto", href: "/legales/contacto", active: pathname === "/legales/contacto" }
+];
+
+// Redes (seguro ante undefined)
+const socialLinks = [
+  { icon: "facebook-f", url: company?.social?.facebook || "#" },
+  { icon: "instagram", url: company?.social?.instagram || "#" },
+];
 ---
 
-<!-- Header Legal con menú responsivo -->
-<header class="bg-white shadow-md sticky top-0 z-50">
+<header
+  id="main-header"
+  class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all duration-500"
+>
+
   <div class="max-w-7xl mx-auto px-4">
-    
-    <!-- Contenedor principal -->
+
     <div class="flex items-center justify-between h-16 md:h-20">
-    
-      <!-- Logo (izquierda) -->
-      <a href="/" class="flex items-center gap-2 md:gap-3 group" aria-label="Volver al inicio">
-        <div class="p-1.5 md:p-2">
-          <img 
-            src="/images/logo3.png" 
-            alt={`${siteConfig.name} logo`} 
-            class="h-16 md:h-16 w-auto object-contain"
-          >
-        </div>
+
+      <!-- Logo -->
+      <a 
+        href="/" 
+        class="flex items-center gap-2 group" 
+        aria-label={`Volver al inicio - ${company.name}`}
+      >
+        <img 
+          src="/images/logo3.png" 
+          alt={`${company.name} logo`} 
+          class="h-14 md:h-16 w-auto object-contain transition-all duration-300 group-hover:brightness-110"
+          loading="eager"
+          fetchpriority="high"
+        />
       </a>
 
-      <!-- Navegación de escritorio (derecha) -->
-      <nav class="hidden md:flex items-center gap-6 lg:gap-8" role="navigation" aria-label="Navegación legal">
-        <a 
-          href="/legales/aviso-legal" 
-          class={`text-sm font-semibold transition-colors duration-300 ${
-            islegales 
-              ? 'text-[#5086c1]' 
-              : 'text-gray-600 hover:text-[#5086c1]'
-          }`}
-        >
-          Aviso Legal
-        </a>
-        <a 
-          href="/legales/privacidad" 
-          class={`text-sm font-semibold transition-colors duration-300 ${
-            isPrivacidad 
-              ? 'text-[#5086c1]' 
-              : 'text-gray-600 hover:text-[#5086c1]'
-          }`}
-        >
-          Privacidad
-        </a>
-        <a 
-          href="/legales/terminos" 
-          class={`text-sm font-semibold transition-colors duration-300 ${
-            isTerminos 
-              ? 'text-[#5086c1]' 
-              : 'text-gray-600 hover:text-[#5086c1]'
-          }`}
-        >
-          Términos
-        </a>
-        <a 
-          href="/legales/cookies" 
-          class={`text-sm font-semibold transition-colors duration-300 ${
-            isCookies 
-              ? 'text-[#5086c1]' 
-              : 'text-gray-600 hover:text-[#5086c1]'
-          }`}
-        >
-          Cookies
-        </a>
-        <a 
-          href="/legales/contacto" 
-          class="flex items-center gap-2 px-4 py-2 bg-[#5086c1] text-white text-sm font-semibold rounded-full hover:bg-[#3d6a9a] transition-colors duration-300"
-        >
-          <i class="bi bi-whatsapp text-lg" aria-hidden="true"></i>
-          Contacto
-        </a>
-      </nav>
+      <!-- Nav Desktop -->
+      <NavDesktop navItems={navItems} />
 
-      <!-- Botón menú móvil -->
-      <button 
-        id="mobile-menu-btn" 
-        class="md:hidden p-2 text-gray-600 hover:text-[#5086c1] hover:bg-gray-50 rounded-lg transition-colors"
+      <!-- Botón móvil -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 text-gray-600 hover:text-[#5086c1] hover:bg-gray-50 rounded-lg transition-all duration-300"
         aria-label="Abrir menú"
         aria-expanded="false"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
+        <div class="w-6 h-5 flex flex-col justify-between">
+          <span class="w-full h-[2px] bg-current transition-all"></span>
+          <span class="w-full h-[2px] bg-current transition-all"></span>
+          <span class="w-full h-[2px] bg-current transition-all"></span>
+        </div>
       </button>
 
     </div>
 
-    <!-- Menú móvil desplegable -->
-    <nav id="mobile-menu" class="hidden md:hidden border-t border-gray-100 py-4" role="navigation" aria-label="Navegación móvil">
-      <div class="flex flex-col gap-2">
-        <a 
-          href="/privacidad" 
-          class={`px-4 py-3 rounded-lg text-sm font-semibold transition-colors ${
-            isPrivacidad 
-              ? 'bg-[#5086c1]/10 text-[#5086c1]' 
-              : 'text-gray-600 hover:bg-gray-50'
-          }`}
-        >
-          Política de Privacidad
-        </a>
-        <a 
-          href="/terminos" 
-          class={`px-4 py-3 rounded-lg text-sm font-semibold transition-colors ${
-            isTerminos 
-              ? 'bg-[#5086c1]/10 text-[#5086c1]' 
-              : 'text-gray-600 hover:bg-gray-50'
-          }`}
-        >
-          Términos de Uso
-        </a>
-        <a 
-          href="/cookies" 
-          class={`px-4 py-3 rounded-lg text-sm font-semibold transition-colors ${
-            isCookies 
-              ? 'bg-[#5086c1]/10 text-[#5086c1]' 
-              : 'text-gray-600 hover:bg-gray-50'
-          }`}
-        >
-          Política de Cookies
-        </a>
-        <a 
-          href="/contacto" 
-          class="px-4 py-3 mt-2 bg-[#5086c1] text-white text-sm font-semibold rounded-lg text-center hover:bg-[#3d6a9a] transition-colors"
-        >
-          Contacto
-        </a>
-        <a 
-          href="/" 
-          class="px-4 py-3 text-sm text-gray-500 hover:text-[#5086c1] text-center transition-colors"
-        >
-          ← Volver al inicio
-        </a>
-      </div>
-    </nav>
-
   </div>
 </header>
 
-<script is:inline>
-  // Toggle menú móvil
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-      const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-      menuBtn.setAttribute('aria-expanded', !isExpanded);
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
+<!-- Nav Mobile -->
+<NavMobile navItems={navItemsMobile} socialLinks={socialLinks} />
 
-  // Inicializar iconos
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
+<script>
+  import { initHeaderLegales } from "../../scripts/header-legales.ts";
+  initHeaderLegales();
 </script>
-

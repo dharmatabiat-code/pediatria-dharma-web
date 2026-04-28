@@ -1,0 +1,27 @@
+---
+// src/components/NavDesktop.astro
+interface Props {
+  navItems: { label: string; href: string }[];
+}
+
+const { navItems } = Astro.props;
+---
+<nav class="hidden lg:flex items-center gap-10" role="navigation" aria-label="Navegación principal">
+  {navItems.map((item) => (
+    <a
+      href={item.href}
+      class="nav-link relative text-slate-700 font-medium text-[13px] tracking-[0.15em] uppercase hover:text-[#5086c1] transition-colors duration-300 group"
+    >
+      {item.label}
+      <span class="absolute -bottom-2 left-1/2 w-0 h-0.5 bg-[#5086c1] transition-all duration-300 group-hover:w-full group-hover:left-0" />
+    </a>
+  ))}
+
+   <a 
+    href="/legales/contacto" 
+    class="flex items-center gap-2 px-4 py-2 bg-[#5086c1] text-white text-sm font-semibold rounded-full hover:bg-[#3d6a9a] transition-colors duration-300"
+    >
+    <i class="bi bi-whatsapp text-lg" aria-hidden="true"></i>
+    Contacto
+  </a>
+</nav>

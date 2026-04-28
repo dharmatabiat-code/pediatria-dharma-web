@@ -1,11 +1,11 @@
 ---
 import Layout_legales from '../../layouts/Layout_legales.astro';
-import { siteConfig } from "../../data/siteConfig";
+import { company } from "../../data/company";
 ---
 
 <Layout_legales 
   title="Aviso Legal"
-  description={`Aviso legal del sitio web de ${siteConfig.name}. Información sobre el propietario y condiciones de uso.`}
+  description={`Aviso legal del sitio web de ${company.name}. Información sobre el propietario y condiciones de uso.`}
 >
   <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 lg:py-16">
     
@@ -22,8 +22,8 @@ import { siteConfig } from "../../data/siteConfig";
     
     <div class="prose prose-lg max-w-none text-gray-700 space-y-6 md:space-y-8">
       <p class="text-base md:text-lg">
-        El presente Aviso Legal regula el uso del sitio web <strong>{siteConfig.siteUrl}</strong> 
-        propiedad de <strong>{siteConfig.owner}</strong>.
+        El presente Aviso Legal regula el uso del sitio web <strong>{company.siteUrl}</strong> 
+        propiedad de <strong>{company.owner}</strong>.
       </p>
 
       <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
@@ -32,25 +32,25 @@ import { siteConfig } from "../../data/siteConfig";
           <li class="flex items-start gap-3">
             <i data-lucide="building-2" class="w-5 h-5 text-[#5086c1] mt-0.5 shrink-0"></i>
             <div>
-              <strong>Propietario:</strong> {siteConfig.owner}
+              <strong>Propietario:</strong> {company.owner}
             </div>
           </li>
           <li class="flex items-start gap-3">
             <i data-lucide="hospital" class="w-5 h-5 text-[#5086c1] mt-0.5 shrink-0"></i>
             <div>
-              <strong>Nombre comercial:</strong> {siteConfig.name}
+              <strong>Nombre comercial:</strong> {company.name}
             </div>
           </li>
           <li class="flex items-start gap-3">
             <i data-lucide="globe" class="w-5 h-5 text-[#5086c1] mt-0.5 shrink-0"></i>
             <div>
-              <strong>Sitio web:</strong> {siteConfig.siteUrl}
+              <strong>Sitio web:</strong> {company.siteUrl}
             </div>
           </li>
           <li class="flex items-start gap-3">
             <i data-lucide="map-pin" class="w-5 h-5 text-[#5086c1] mt-0.5 shrink-0"></i>
             <div>
-              <strong>Domicilio:</strong> {siteConfig.location.fullAddress}
+              <strong>Domicilio:</strong> {company.address.fullAddress}
             </div>
           </li>
         </ul>
@@ -61,13 +61,14 @@ import { siteConfig } from "../../data/siteConfig";
         <p class="text-sm md:text-base">
           El presente sitio web tiene carácter informativo y tiene como objetivo principal 
           proporcionar información sobre los servicios de salud pediátrica ofrecidos por 
-          <strong>{siteConfig.owner}</strong> a través de <strong>{siteConfig.name}</strong>.
+          <strong>{company.owner}</strong> a través de <strong>{company.name}</strong>.
         </p>
         <p class="text-sm md:text-base mt-4">
           La información contenida en este sitio web no constituye asesoramiento médico, 
-          diagnóstico o tratamiento. Para cualquier consulta médica, please contactenos 
+          diagnóstico o tratamiento. Para cualquier consulta médica, contáctenos 
           directamente.
         </p>
+
       </section>
 
       <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
@@ -75,7 +76,7 @@ import { siteConfig } from "../../data/siteConfig";
         <p class="text-sm md:text-base">
           Todos los contenidos de este sitio web, incluyendo pero no limitado a textos, 
           gráficos, logotipos, imágenes, código, diseño y cualquier otro elemento, son 
-          propiedad exclusiva de <strong>{siteConfig.owner}</strong> o de terceros que 
+          propiedad exclusiva de <strong>{company.owner}</strong> o de terceros que 
           han autorizado su uso.
         </p>
         <p class="text-sm md:text-base mt-4">
@@ -85,14 +86,14 @@ import { siteConfig } from "../../data/siteConfig";
           <li>La reproducción, distribución o modificación total o parcial del contenido</li>
           <li>La utilización del contenido para fines comerciales o publicitarios</li>
           <li>La eliminación, alteration o evasión de los dispositivos técnicos de protección</li>
-          <li>Cualquier uso que no haya sido expresamente autorizado por {siteConfig.owner}</li>
+          <li>Cualquier uso que no haya sido expresamente autorizado por {company.owner}</li>
         </ul>
       </section>
 
       <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
         <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">4. Limitación de responsabilidad</h2>
         <p class="text-sm md:text-base">
-          <strong>{siteConfig.owner}</strong> no se hace responsable de:
+          <strong>{company.owner}</strong> no se hace responsable de:
         </p>
         <ul class="list-disc pl-4 md:pl-6 space-y-2 mt-4 text-sm md:text-base">
           <li>La exactitud, integridad o actualización de la información contenida en el sitio</li>
@@ -106,9 +107,10 @@ import { siteConfig } from "../../data/siteConfig";
       <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
         <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">5. Enlaces externos</h2>
         <p class="text-sm md:text-base">
-          El sitio puede contener enlaces a páginas web de terceros. <strong>{siteConfig.owner}</strong> 
-          no exercised control sobre dichos sitios ni se hace responsable de sus contenidos.
+          El sitio puede contener enlaces a páginas web de terceros. <strong>{company.owner}</strong> 
+          no ejercita control sobre dichos sitios ni se hace responsable de sus contenidos.
         </p>
+
         <p class="text-sm md:text-base mt-4">
           La inclusión de enlaces no implica asociación ni aprobación de los contenidos 
           de los sitios enlazados.
@@ -135,33 +137,28 @@ import { siteConfig } from "../../data/siteConfig";
       <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
         <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">7. Protección de datos personales</h2>
         <p class="text-sm md:text-base">
-          El tratamiento de datos personales realizado a través de este sitio web se 
-          regirá por la Política de Privacidad disponible en <a href="/privacidad" class="text-[#5086c1] hover:underline">/privacidad</a>.
+          Este sitio web no recopila ni almacena datos personales. No utilizamos formularios 
+          que guarden información en nuestros servidores. La única forma de contacto es a través 
+          de mensajes directos por WhatsApp.
         </p>
         <p class="text-sm md:text-base mt-4">
-          El uso del sitio implica la aceptación de dicha política de privacidad.
+          Para más información, consulte nuestra <a href="/legales/privacidad" class="text-[#5086c1] hover:underline">Política de Privacidad</a>.
         </p>
       </section>
 
       <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
-        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">8. Cookies</h2>
-        <p class="text-sm md:text-base">
-          Este sitio utiliza cookies conforme a lo establecido en la Política de Cookies 
-          disponible en <a href="/cookies" class="text-[#5086c1] hover:underline">/cookies</a>.
-        </p>
-      </section>
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">8. Modificaciones</h2>
 
-      <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
-        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">9. Modificaciones</h2>
         <p class="text-sm md:text-base">
-          <strong>{siteConfig.owner}</strong> se reserva el derecho de modificar el presente 
+          <strong>{company.owner}</strong> se reserva el derecho de modificar el presente 
           aviso legal en cualquier momento. Las modificaciones entrarán en vigor desde su 
           publicación en el sitio.
         </p>
       </section>
 
       <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
-        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">10. Ley aplicable y jurisdicción</h2>
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">9. Ley aplicable y jurisdicción</h2>
+
         <p class="text-sm md:text-base">
           El presente aviso legal se regirá por la legislación peruana vigente.
         </p>
@@ -172,30 +169,32 @@ import { siteConfig } from "../../data/siteConfig";
       </section>
 
       <section class="bg-white p-4 md:p-6 rounded-xl shadow-sm border border-gray-100">
-        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">11. Contacto</h2>
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">10. Contacto</h2>
+
         <p class="text-sm md:text-base">
           Para cualquier consulta relacionada con el presente aviso legal, puede contactarnos:
         </p>
         <ul class="list-none pl-0 space-y-3 mt-4 text-sm md:text-base">
           <li class="flex items-center gap-2">
             <i data-lucide="mail" class="w-4 h-4 text-[#5086c1]"></i>
-            <strong>Correo electrónico:</strong> {siteConfig.contact.email}
+            <strong>Correo electrónico:</strong> {company.contact.email}
           </li>
           <li class="flex items-center gap-2">
             <i data-lucide="phone" class="w-4 h-4 text-[#5086c1]"></i>
-            <strong>Teléfono:</strong> {siteConfig.contact.phone}
+            <strong>Teléfono:</strong> {company.contact.phone}
           </li>
           <li class="flex items-center gap-2">
             <i data-lucide="map-pin" class="w-4 h-4 text-[#5086c1]"></i>
-            <strong>Dirección:</strong> {siteConfig.location.fullAddress}
+            <strong>Dirección:</strong> {company.address.fullAddress}
           </li>
         </ul>
       </section>
 
       <section class="bg-gray-50 p-4 md:p-6 rounded-xl border border-gray-200">
-        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">12. Información adicional</h2>
+        <h2 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">11. Información adicional</h2>
+
         <p class="text-sm md:text-base">
-          <strong>{siteConfig.name}</strong> es propiedad de <strong>{siteConfig.owner}</strong>, 
+          <strong>{company.name}</strong> es propiedad de <strong>{company.owner}</strong>, 
           empresa dedicada a la prestación de servicios de salud pediátrica en la ciudad de 
           Huamanga, Ayacucho, Perú.
         </p>
@@ -223,4 +222,3 @@ import { siteConfig } from "../../data/siteConfig";
     lucide.createIcons();
   }
 </script>
-

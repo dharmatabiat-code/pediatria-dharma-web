@@ -1,12 +1,12 @@
 ---
 import Layout_legales from '../../layouts/Layout_legales.astro';
-import { siteConfig } from "../../data/siteConfig";
+import { company } from "../../data/company";
 import ContactFormLegal from '../../components/ContactFormLegal';
 ---
 
 <Layout_legales 
   title="Contacto Legal"
-  description={`Formulario de contacto para asuntos legales de ${siteConfig.name}. Consulte sobre términos legales, privacidad y políticas.`}
+  description={`Formulario de contacto para asuntos legales de ${company.name}. Consulte sobre términos legales, privacidad y políticas.`}
 >
   <div class="max-w-4xl mx-auto px-4 py-8 md:py-12 lg:py-16">
     
@@ -23,8 +23,9 @@ import ContactFormLegal from '../../components/ContactFormLegal';
     
     <p class="text-base md:text-lg text-gray-600 mb-8 md:mb-10">
       Utilice este formulario para consultas relacionadas con aspectos legales de nuestro sitio web, 
-      incluyendo avisos legales, política de privacidad, términos de uso o uso de cookies.
+      incluyendo avisos legales, política de privacidad y términos de uso.
     </p>
+
 
     <!-- Información de contacto -->
     <div class="grid md:grid-cols-2 gap-6 mb-10">
@@ -35,7 +36,7 @@ import ContactFormLegal from '../../components/ContactFormLegal';
           </div>
           <div>
             <h3 class="font-bold text-gray-900 mb-1">Correo electrónico</h3>
-            <p class="text-gray-600 text-sm">{siteConfig.contact.email}</p>
+            <p class="text-gray-600 text-sm">{company.contact.email}</p>
           </div>
         </div>
       </div>
@@ -47,7 +48,7 @@ import ContactFormLegal from '../../components/ContactFormLegal';
           </div>
           <div>
             <h3 class="font-bold text-gray-900 mb-1">Teléfono</h3>
-            <p class="text-gray-600 text-sm">{siteConfig.contact.phone}</p>
+            <p class="text-gray-600 text-sm">{company.contact.phone}</p>
           </div>
         </div>
       </div>
@@ -68,8 +69,8 @@ import ContactFormLegal from '../../components/ContactFormLegal';
       <div class="p-6 md:p-8">
         <ContactFormLegal 
           client:load
-          email={siteConfig.contact.email}
-          whatsappNumber={siteConfig.contact.whatsapp}
+          email={company.contact.email}
+          whatsappNumber={company.contact.whatsapp}
         />
       </div>
     </div>
@@ -116,12 +117,7 @@ import ContactFormLegal from '../../components/ContactFormLegal';
       >
         Términos de Uso
       </a>
-      <a 
-        href="/legales/cookies" 
-        class="px-4 py-2 text-sm text-gray-600 hover:text-[#5086c1] hover:bg-[#5086c1]/5 rounded-lg transition-colors"
-      >
-        Política de Cookies
-      </a>
+
     </div>
 
     <!-- Botón de volver -->
@@ -136,10 +132,3 @@ import ContactFormLegal from '../../components/ContactFormLegal';
     </div>
   </div>
 </Layout_legales>
-
-<script is:inline>
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
-</script>
-

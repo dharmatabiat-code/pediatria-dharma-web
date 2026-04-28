@@ -2,8 +2,9 @@
 // Layout específico para páginas legales
 import Header from "../components/legales/Header.astro";
 import Footer from "../components/legales/Footer.astro";
-import CookiesBanner from "../components/CookiesBanner.astro";
-import { siteConfig } from "../data/siteConfig";
+import { company } from "../data/company";
+
+
 import "../styles/global.css";
 
 interface Props {
@@ -11,9 +12,11 @@ interface Props {
   description?: string;
 }
 
-const { title, description = siteConfig.seo.description } = Astro.props;
+const { title, description = company.description } = Astro.props;
 
-const fullTitle = `${title} - ${siteConfig.name}`;
+
+const fullTitle = `${title} - ${company.name}`;
+
 const canonicalUrl = new URL(Astro.url.pathname, Astro.url.origin).href;
 ---
 
@@ -29,7 +32,8 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.url.origin).href;
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content={siteConfig.seo.keywords.join(", ")} />
+    <meta name="keywords" content="pediatría, clínica infantil, vacunas, emergencias pediátricas, Huamanga, Ayacucho" />
+
     <link rel="icon" type="image/svg+xml" href="/icon.png" />
     <link rel="canonical" href={canonicalUrl} />
     <meta name="robots" content="index, follow" />
@@ -37,7 +41,8 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.url.origin).href;
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={siteConfig.seo.ogImage} />
+    <meta property="og:image" content="/images/og-image.jpg" />
+
     <meta property="og:url" content={canonicalUrl} />
 
     <!-- Bootstrap Icons -->
@@ -49,13 +54,29 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.url.origin).href;
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+
+         <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Lucide Icons -->
-    <script is:inline src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Awesome - Load asynchronously -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
+
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
+      rel="stylesheet"
+    />
+
   </head>
 
   <body class="bg-gray-50 text-gray-800 antialiased min-h-screen flex flex-col font-nunito pb-16 md:pb-20">
@@ -68,19 +89,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.url.origin).href;
 
     <Footer />
 
-    <!-- Banner de Cookies -->
-    <CookiesBanner />
-
-    <!-- Script para inicializar iconos -->
-    <script is:inline>
-      function initIcons() {
-        if (window.lucide) {
-          window.lucide.createIcons();
-        }
-      }
-      initIcons();
-      document.addEventListener("astro:page-load", initIcons);
-    </script>
   </body>
 </html>
 
@@ -97,3 +105,27 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.url.origin).href;
   }
 </style>
 
+<script>
+  import AOS from "aos";
+  import "aos/dist/aos.css";
+
+  const initAOS = () => {
+    AOS.init({
+      duration: 800, // Un poco más rápido mejora la sensación de fluidez
+      once: true,
+      easing: 'ease-out-quad',
+      offset: 80,
+      // Esta línea detecta si es móvil y puede desactivar AOS si lo prefieres
+      // disable: window.innerWidth < 768 
+    });
+  };
+
+  initAOS();
+
+  // Reinicializar tras la transición de página de Astro
+  document.addEventListener("astro:after-swap", () => {
+    initAOS();
+    // Forzar un refresh de las posiciones de los elementos
+    AOS.refresh();
+  });
+</script>

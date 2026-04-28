@@ -1,15 +1,21 @@
+// Información del propietario
 export const company = {
+  owner: "Darma",
   name: "Dharma Pediatría",
-  tagline: "Medicina Pediátrica Integral y de Vanguardia",
   description: "Especialistas en el cuidado avanzado de la salud infantil. En Dharma Pediatría combinamos ciencia, calidez y tecnología para acompañar el crecimiento y bienestar de tus hijos en Ayacucho.",
+  tagline: "Especialistas en la salud y bienestar de tus hijos en Ayacucho",
+  siteUrl: "https://clinicapediatrica.com", // URL base de tu sitio 
+ 
   address: {
-    street: "Av. Independencia 123", // Misma zona médica o dirección de Dharma
-   district: "San Juan Bautista",
+    street: "Av. Los Jardines, Cuadra - 3", // Misma zona médica o dirección de Dharma
+    district: "San Juan Bautista",
     city: "Huamanga",
     state: "Ayacucho",
     zip: "05001",
     country: "Perú",
-    mapLink: "https://maps.app.goo.gl/HY9xLyGiGDvp3ofGA"
+    mapLink: "https://maps.app.goo.gl/HY9xLyGiGDvp3ofGA",
+    fullAddress:
+    "Av. Independencia 123, San Juan Bautista, Huamanga, Ayacucho, Perú",
   },
   contact: {
     phone: "+51 997 307 782", // Manteniendo la línea de contacto central
