@@ -1,13 +1,21 @@
-# Task: Cambiar iconos Lucide de legales por Awesome
+# TODO: Integrar y Mejorar Layout Principal
 
-## Plan aprobado ✅
-## Task completada ✅
+## Pasos Completados
+- [x] Analizar layout actual vs propuesto
+- [x] Identificar problemas críticos y mejoras
+- [x] Verificar dependencias (seo.js, company.js, Astro.site)
+- [x] Confirmar que Material Icons no se usan en componentes
+- [x] Crear plan de integración
 
-**Completado:**
-- [x] 1. Crear/editar TODO.md 
-- [x] 2. Actualizar src/components/legales/Footer.astro - Iconos cambiados: phone→fa-phone, mail→fa-envelope, map-pin→fa-map-location-dot. Script lucide removido.
-- [x] 3. Verificar cambios - Archivo actualizado correctamente.
-- [x] 4. Iconos Awesome funcionando en legales.
-- [x] 5. Task completada.
+## Pasos Completados (continuación)
+- [x] Crear layout integrado y mejorado en `src/layouts/Layout.astro`
+  - [x] Usar estructura del layout propuesto como base
+  - [x] Agregar `<style is:global>` completo del layout actual
+  - [x] Corregir ruta de imagen a `/images/og-image.jpg`
+  - [x] Eliminar import `company` sin usar
+  - [x] Eliminar Material Icons (no usados)
+  - [x] Mantener dns-prefetch para performance
+  - [x] Asegurar todos los metadatos SEO estén presentes
 
-Los iconos Lucide en la sección legales han sido reemplazados exitosamente por Font Awesome.
+## Pasos Pendientes
+- [ ] Verificar build con `npm run build`

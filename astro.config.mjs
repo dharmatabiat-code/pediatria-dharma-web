@@ -8,13 +8,11 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   // CAMBIO CRÍTICO: Usa el dominio real o el de Vercel. 
   // Astro necesita esto para generar el sitemap y las URLs canónicas.
-  site: 'http://localhost:4321',
+  site: 'https://pediatria.dharmatabiat.com', 
 
   output: 'server',
   adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
+    webAnalytics: { enabled: true },
   }),
 
   integrations: [
@@ -27,9 +25,5 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
-    // Optimización para Lucide e iconos pesados
-    ssr: {
-      noExternal: ['lucide-react']
-    }
   },
 });

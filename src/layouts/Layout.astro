@@ -32,7 +32,7 @@ const medicalClinicSchema = seo.schema.medicalBusiness;
 const medicalBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
-  "name": "Pediátrica Dharma",
+  "name": "Pediátria Dharma",
   "alternateName": "Clínica Pediátrica Dra. Amalia Luque",
   "description": description,
   "url": siteUrl,
@@ -91,6 +91,7 @@ const medicalBusinessSchema = {
     
    <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
+    
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={seo.openGraph.type} />
@@ -99,10 +100,10 @@ const medicalBusinessSchema = {
     <meta property="og:description" content={description} />
     <meta property="og:image" content={siteUrl + defaultImage} />
     <meta property="og:locale" content={seo.openGraph.locale} />
-    <meta
+   <!--  <meta
       property="og:locale:alternate"
       content={seo.openGraph.localeAlternate[0]}
-    />
+    /> -->
     <meta property="og:site_name" content={seo.openGraph.siteName} />
 
     <!-- Keywords -->
