@@ -4,49 +4,37 @@ import { company } from '../../data/company.js';
 
 <aside class="lg:col-span-4 space-y-10" data-aos="fade-right"> 
 
-  <div class="px-2 group" data-aos="fade-up" data-aos-delay="100"> 
-    <div class="flex items-center gap-4 mb-6"> 
-      <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center transition-all group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-white shadow-sm"> 
-        <i class="fa-solid fa-location-dot text-[10px]"></i> 
-      </div> 
-      <h3 class="font-black text-slate-900 uppercase tracking-[0.2em] text-[11px]">Ubicación</h3> 
+  <div class="relative z-10">
+      <div class="bg-white p-2 rounded-[2.5rem] shadow-2xl shadow-slate-200 animate-slide-in-left animation-delay-400 border border-white/5">
+        <div class="flex items-center">
+          <img src="dhar/horario.jpeg">
+        </div>
+      </div>
+  </div>
+
+  <div class="group bg-white border border-slate-500 p-6 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="100"> 
+  <div class="flex items-center gap-4 mb-6"> 
+    <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center transition-all group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-white shadow-sm"> 
+      <i class="fa-solid fa-location-dot text-[10px]"></i> 
     </div> 
-    <p class="text-slate-500 text-sm font-medium leading-relaxed mb-6 max-w-65"> 
-       {company.address.street} <br/>
-       <span class="text-slate-400 text-xs font-bold">{company.address.city}, {company.address.state}</span>
-    </p> 
-    <a  
-      href={company.address.mapLink} 
-      target="_blank" 
-      class="group/link inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.4em] text-blue-600 transition-all" 
-    > 
-      <span class="border-b-2 border-blue-50 group-hover/link:border-blue-500 pb-1">Nuestra sede en Maps</span> 
-      <i class="fa-solid fa-arrow-right-long transition-transform group-hover/link:translate-x-2"></i> 
-    </a> 
+    <h3 class="font-black text-slate-900 uppercase tracking-[0.2em] text-[11px]">Ubicación</h3> 
   </div> 
 
-    <div class="p-8 rounded-[2.5rem] bg-slate-900 shadow-2xl relative overflow-hidden group" data-aos="fade-up"> 
-    <div class="absolute -top-10 -right-10 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl transition-opacity group-hover:opacity-100 opacity-50"></div>
-    
-    <div class="relative z-10">
-      <div class="flex items-center gap-4 mb-10"> 
-        <div class="w-10 h-10 rounded-xl bg-linear-to-tr from-orange-400 to-amber-300 text-slate-900 flex items-center justify-center shadow-lg shadow-orange-900/20 transition-transform group-hover:rotate-6"> 
-          <i class="fa-solid fa-clock text-[10px]"></i> 
-        </div> 
-        <h3 class="font-black text-white uppercase tracking-[0.2em] text-[11px]">Disponibilidad</h3> 
-      </div> 
-      <div class="space-y-5"> 
-        <div class="flex justify-between items-end border-b border-white/5 pb-3"> 
-          <span class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em]">Lun - Vie</span> 
-          <span class="text-white font-black text-sm tracking-tight">08:00 — 20:00</span> 
-        </div> 
-        <div class="flex justify-between items-end border-b border-white/5 pb-3"> 
-          <span class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em]">Sábados</span> 
-          <span class="text-white font-black text-sm tracking-tight">09:00 — 14:00</span> 
-        </div> 
-      </div>
-    </div>
-  </div> 
+  <p class="text-slate-500 text-sm font-medium leading-relaxed mb-6 max-w-64"> 
+      {company.address.street} <br/>
+      <span class="text-slate-400 text-xs font-bold">{company.address.district}, {company.address.city}, {company.address.state}</span>
+  </p> 
+
+  <a  
+    href={company.address.mapLink} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    class="group/link inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.4em] text-blue-600 transition-all" 
+  > 
+    <span class="border-b-2 border-blue-50 group-hover/link:border-blue-500 pb-1">Nuestra sede en Maps</span> 
+    <i class="fa-solid fa-arrow-right-long transition-transform group-hover/link:translate-x-2"></i> 
+  </a> 
+</div>
 
 
   <div class="relative p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] overflow-hidden" data-aos="fade-up" data-aos-delay="200"> 

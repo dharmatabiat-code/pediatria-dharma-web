@@ -5,11 +5,11 @@ const { company } = Astro.props;
 
 <div 
   data-aos="zoom-in" 
-  class="relative overflow-hidden rounded-[3rem] lg:rounded-[4rem] shadow-2xl group border-8 border-slate-50 h-180" 
+  class="relative overflow-hidden rounded-[3rem] lg:rounded-[4rem] group border-8 border-slate-50 h-180 m-2" 
   id="map-card"
 >
   <iframe
-    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d588.712092917047!2d-74.20452417042885!3d-13.172328902196003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTPCsDEwJzIwLjIiUyA3NMKwMTInMTYuOSJX!5e0!3m2!1ses-419!2spe!4v1772667295555!5m2!1ses-419!2spe"
+    src={company.address.mapFrame}
     width="100%"
     height="100%"
     style="border:0;"

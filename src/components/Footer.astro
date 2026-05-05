@@ -29,7 +29,7 @@ const schedule = [
 ---
 
 <footer class="bg-[#5086c1] text-white pt-20 pb-10 relative overflow-hidden">
-  <div class="max-w-360 mx-auto px-6 relative z-10">
+  <div class="max-w-380 mx-auto px-6 relative z-10">
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
       
@@ -98,19 +98,24 @@ const schedule = [
         </ul>
       </div>
 
-      <div>
-        <h4 class="text-lg font-black mb-10 border-l-4 border-[#FFB7C5] pl-5 uppercase tracking-[0.2em] text-[11px]">Horario</h4>
-        <div class="bg-slate-900/20 backdrop-blur-md p-7 rounded-[2.5rem] border border-white/10 space-y-4 shadow-inner">
-          {schedule.map((item, index) => (
-            <div class={`flex justify-between items-center text-sm ${index !== schedule.length - 1 ? 'border-b border-white/10 pb-3' : 'pt-1'}`}>
-              <span class={`font-bold italic font-serif ${item.isClosed ? 'text-pink-200 uppercase text-[10px] tracking-widest not-italic font-sans font-black' : 'opacity-70'}`}>
-                {item.days}
-              </span>
-              <span class={`${item.isClosed ? 'text-xs font-black text-pink-300 italic opacity-80' : 'bg-white/10 px-3 py-1 rounded-lg font-black text-[11px]'}`}>
-                {item.hours}
-              </span>
+     <div>
+        <!-- Se eliminó text-lg para mantener los 11px definidos al final -->
+        <h4 class="font-black mb-10 border-l-4 border-[#FFB7C5] pl-5 uppercase tracking-[0.2em] text-[11px] text-slate-800">
+          Horario
+        </h4>
+
+        <div class="relative z-10">
+          <!-- Se cambió el borde a slate-100 para que sea sutil pero visible -->
+          <div class="bg-white p-2 rounded-[2.5rem] animate-slide-in-left animation-delay-400 border border-slate-100 shadow-xl">
+            <div class="flex items-center">
+              <!-- Añadido rounded para seguir la estética y alt para SEO/Accesibilidad -->
+              <img 
+                src="dhar/horario.jpeg" 
+                alt="Horario de atención" 
+                class="w-full h-auto rounded-[2.2rem] object-cover"
+              >
             </div>
-          ))}
+          </div>
         </div>
       </div>
 

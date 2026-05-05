@@ -26,17 +26,17 @@ const phoneHref = String(company.contact.phone).replace(/[^\d+]/g, "");
     >
 
      <TitleSection />
-     
-      <div class="max-w-7xl mx-auto px-4">
+
+      <div class="max-w-350 mx-auto">
       
         <div class="grid lg:grid-cols-12 gap-8 items-start relative pt-24 md:pt-40 overflow-hidden">
-          <div class="lg:col-span-4 space-y-8">
-          <ContactSidebar client:visible company={company} />
+          <div class="lg:col-span-4">
+          <ContactSidebar company={company} />
           </div>
          
           <div class="lg:col-span-8 space-y-8">
             <div>
-              <ContactMapCard client:visible company={company} />
+              <ContactMapCard company={company} />
             </div>
           </div>
         </div>
