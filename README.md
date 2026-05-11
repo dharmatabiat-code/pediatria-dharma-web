@@ -1,4 +1,4 @@
-# 🏥 Clínica Pediátrica - Sitio Web Oficial
+# 🏥 Pediátria Dharma - Sitio Web Oficial
 
 Sitio web de la **Pediátria Dharma** especializada en la salud y bienestar de niños en Ayacucho, Perú.
 
