@@ -108,15 +108,19 @@ export default function ContactForm({
     }));
   };
 
+  const sanitizeWhatsAppNumber = (number) => String(number).replace(/\D/g, '');
+
   const buildWhatsAppMessage = () => {
-    return `*Nuevo mensaje de contacto - Clínica Pediátrica*%0A%0A` +
-           `*Nombre:* ${formData.name}%0A` +
-           `*Email:* ${formData.email}%0A` +
-           `*Teléfono:* ${formData.phone}%0A` +
-           `*Asunto:* ${formData.subject}%0A` +
-           `*Método de contacto preferido:* ${formData.preferredContact.toUpperCase()}%0A%0A` +
-           `*Mensaje:*%0A${formData.message}%0A%0A` +
-           `---%0AEnviado desde el formulario de contacto web`;
+    const message = `Hola, estoy enviando este mensaje desde el formulario de contacto web.\n\n` +
+      `Nombre: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Teléfono: ${formData.phone}\n` +
+      `Asunto: ${formData.subject}\n` +
+      `Método de contacto preferido: ${formData.preferredContact.toUpperCase()}\n\n` +
+      `Mensaje:\n${formData.message}\n\n` +
+      `---\nEnviado desde el formulario de contacto web`;
+
+    return encodeURIComponent(message);
   };
 
   const buildMailtoLink = () => {
@@ -130,6 +134,19 @@ export default function ContactForm({
       `---\nEnviado desde el formulario de contacto web`
     );
     return `mailto:${email}?subject=${subject}&body=${body}`;
+  };
+
+  const buildGmailLink = () => {
+    const subject = encodeURIComponent(`Contacto Web: ${formData.subject}`);
+    const body = encodeURIComponent(
+      `Nombre: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Teléfono: ${formData.phone}\n` +
+      `Método de contacto preferido: ${formData.preferredContact.toUpperCase()}\n\n` +
+      `Mensaje:\n${formData.message}\n\n` +
+      `---\nEnviado desde el formulario de contacto web`
+    );
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${subject}&body=${body}`;
   };
 
 
@@ -155,13 +172,13 @@ export default function ContactForm({
       // Determine submission method based on preferred contact
       if (formData.preferredContact === 'whatsapp') {
         // Open WhatsApp with pre-filled message
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${buildWhatsAppMessage()}`;
+        const whatsappUrl = `https://wa.me/${sanitizeWhatsAppNumber(whatsappNumber)}?text=${buildWhatsAppMessage()}`;
         window.open(whatsappUrl, '_blank');
         setSubmitMethod('whatsapp');
 
       } else if (formData.preferredContact === 'email') {
-        // Open email client
-        window.location.href = buildMailtoLink();
+        // Open Gmail compose as fallback; mailto may not open if no mail client is configured
+        window.open(buildGmailLink(), '_blank');
         setSubmitMethod('email');
       } else {
         // For phone preference, show success and let them know we'll call
@@ -443,7 +460,7 @@ export default function ContactForm({
         {/* Helper text */}
         <p className="text-xs text-gray-400 text-center">
           {formData.preferredContact === 'whatsapp' && 'Se abrirá WhatsApp con tu mensaje pre-escrito'}
-          {formData.preferredContact === 'email' && 'Se abrirá tu cliente de correo electrónico'}
+          {formData.preferredContact === 'email' && 'Se abrirá Gmail para que completes el correo y lo envíes'}
           {formData.preferredContact === 'phone' && 'Te llamaremos al número proporcionado'}
         </p>
       </form>

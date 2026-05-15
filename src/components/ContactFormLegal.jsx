@@ -117,16 +117,20 @@ export default function ContactFormLegal({
     }));
   };
 
+  const sanitizeWhatsAppNumber = (number) => String(number).replace(/\D/g, '');
+
   const buildWhatsAppMessage = () => {
     const queryLabel = queryTypes.find(q => q.value === formData.queryType)?.label || 'Otro';
-    return `*Consulta Legal - Clínica Pediátrica*%0A%0A` +
-           `*Tipo de consulta:* ${queryLabel}%0A%0A` +
-           `*Nombre:* ${formData.name}%0A` +
-           `*Email:* ${formData.email}%0A` +
-           `*Teléfono:* ${formData.phone}%0A` +
-           `*Método de contacto preferido:* ${formData.preferredContact.toUpperCase()}%0A%0A` +
-           `*Mensaje:*%0A${formData.message}%0A%0A` +
-           `---%0AEnviado desde el formulario de contacto legal`;
+    const message = `Hola, estoy enviando esta consulta legal desde el formulario web.\n\n` +
+      `Tipo de consulta: ${queryLabel}\n\n` +
+      `Nombre: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Teléfono: ${formData.phone}\n` +
+      `Método de contacto preferido: ${formData.preferredContact.toUpperCase()}\n\n` +
+      `Mensaje:\n${formData.message}\n\n` +
+      `---\nEnviado desde el formulario de contacto legal`;
+
+    return encodeURIComponent(message);
   };
 
   const buildMailtoLink = () => {
@@ -142,6 +146,21 @@ export default function ContactFormLegal({
       `---\nEnviado desde el formulario de contacto legal`
     );
     return `mailto:${email}?subject=${subject}&body=${body}`;
+  };
+
+  const buildGmailLink = () => {
+    const queryLabel = queryTypes.find(q => q.value === formData.queryType)?.label || 'Otro';
+    const subject = encodeURIComponent(`Consulta Legal: ${queryLabel}`);
+    const body = encodeURIComponent(
+      `Tipo de consulta: ${queryLabel}\n\n` +
+      `Nombre: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Teléfono: ${formData.phone}\n` +
+      `Método de contacto preferido: ${formData.preferredContact.toUpperCase()}\n\n` +
+      `Mensaje:\n${formData.message}\n\n` +
+      `---\nEnviado desde el formulario de contacto legal`
+    );
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${subject}&body=${body}`;
   };
 
   const handleSubmit = async (e) => {
@@ -165,11 +184,11 @@ export default function ContactFormLegal({
       
       // Determine submission method based on preferred contact
       if (formData.preferredContact === 'whatsapp') {
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${buildWhatsAppMessage()}`;
+        const whatsappUrl = `https://wa.me/${sanitizeWhatsAppNumber(whatsappNumber)}?text=${buildWhatsAppMessage()}`;
         window.open(whatsappUrl, '_blank');
         setSubmitMethod('whatsapp');
       } else if (formData.preferredContact === 'email') {
-        window.location.href = buildMailtoLink();
+        window.open(buildGmailLink(), '_blank');
         setSubmitMethod('email');
       } else {
         setSubmitMethod('phone');
@@ -207,7 +226,7 @@ export default function ContactFormLegal({
               {submitMethod === 'whatsapp' 
                 ? 'Serás redirigido a WhatsApp para completar el envío.'
                 : submitMethod === 'email'
-                ? 'Se abrirá tu cliente de correo para enviar el mensaje.'
+                ? 'Se abrirá Gmail para que envíes la consulta.'
                 : 'Nos pondremos en contacto contigo pronto.'}
             </p>
           </div>
